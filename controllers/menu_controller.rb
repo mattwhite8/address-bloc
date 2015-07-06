@@ -14,6 +14,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Delete all entries"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -40,7 +41,10 @@ class MenuController
       puts "Good-bye!"
 
       exit(0)
-
+    when 6
+      system "clear"
+      nuclear_option
+      main_menu
     else 
       system "clear"
       puts "Sorry, that is not a valid input"
@@ -141,6 +145,11 @@ class MenuController
   def delete_entry(entry)
     @address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
+  end
+
+  def nuclear_option
+    @address_book.entries.clear
+    puts "What have you done..."
   end
 
   def edit_entry(entry)
